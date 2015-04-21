@@ -1,12 +1,12 @@
 # Schmitt_CSCI2270_FinalProject
 
 	---LITS_Project---
-developed by Jonathan Schmitt starting 4/14/2015
+developed by Jonathan Schmitt and Zachary Wilson starting 4/14/2015
 
 Introduction:
 
-This is a c++ project designed to work with the libspotify api in order
-to generate playlists using taste of the user logged in and a desired length of time.
+This is a c++ project library designed to work with the libspotify api and supply
+additional functionality.
 
 Dependencies:
 
@@ -16,5 +16,3 @@ the libraries documentation at https://developer.spotify.com/technologies/libspo
 Use:
 
 In order to run internet access and a spotify account with premium is required.
-The executable is to be run with 4 arguments: spotify account username, spotify
-account password, time (in minutes) of playlist, and name of playlist.
