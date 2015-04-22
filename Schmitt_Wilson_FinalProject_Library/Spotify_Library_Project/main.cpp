@@ -10,8 +10,8 @@ using namespace std;
 #include <pthread.h>
 const char *username = "129346153";
 const char *password = "Jawnesux69";
-static pthread_mutex_t g_mutex;
-static pthread_cond_t g_cond;
+//static pthread_mutex_t g_mutex;
+//static pthread_cond_t g_cond;
 #define G_MUTEX_SYNCHRONIZE(code) do {\
   pthread_mutex_lock(&(g_mutex));\
   code;\
@@ -57,27 +57,22 @@ static sp_session_config spconfig = {
     .application_key_size = 0, // Set in main()
     .user_agent = "Schmitt",
     .callbacks = NULL,
-    .userdata = NULL,
+    NULL,
 };
 int main()
 {
-    static sp_session * session = NULL;
+    sp_session * session = NULL;
     sp_error err;
     int numplaylists = -1;
     sp_playlistcontainer * active_container = NULL;
     sp_playlist * active_playlist;
     spconfig.application_key_size= g_appkey_size;
-    sp_session_create(&spconfig, &session);
-    pthread_mutex_init(&g_mutex, NULL);
-    pthread_cond_init(&g_cond, NULL);
-
-    pthread_cond_signal(&g_cond);
-    pthread_mutex_unlock(&g_mutex);
+    err = sp_session_create(&spconfig, &session);
+    cout<<sp_error_message(err)<<endl;
     cout<<sp_session_connectionstate(session)<<endl;
-    //G_WAIT(
-    sp_session_login(session, username, password, 0, NULL);
-    //       );
-    pthread_mutex_lock(&g_mutex);
+    err = sp_session_login(session, username, password, 0, NULL);
+
+    cout<<sp_error_message(err)<<endl;
     cout<<sp_session_connectionstate(session)<<endl;
     active_container = sp_session_playlistcontainer(session);
     if (active_container != NULL){
@@ -90,4 +85,5 @@ int main()
     sp_session_logout(session);
     sp_session_release(session);
     return 0;
+    //drop check
 }

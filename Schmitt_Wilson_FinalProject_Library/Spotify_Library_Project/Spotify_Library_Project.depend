@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1429586183 source:/home/user/Dropbox/Data_Structures/Schmitt_CSCI2270_FinalProject/Schmitt_Wilson_FinalProject_Library/Spotify_Library_Project/main.cpp
+1429675296 source:/home/user/Dropbox/Data_Structures/Schmitt_CSCI2270_FinalProject/Schmitt_Wilson_FinalProject_Library/Spotify_Library_Project/main.cpp
 	<stdint.h>
 	<stdlib.h>
 	<time.h>
@@ -8,4 +8,5 @@
 	<iostream>
 	<string>
 	<libspotify/api.h>
+	<pthread.h>
 
