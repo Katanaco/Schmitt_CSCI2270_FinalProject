@@ -20,7 +20,10 @@ HashTable::HashTable(int s){
     }
 }
 HashTable::~HashTable(){
-
+    for (int i = 0; i < hashsize; i++)
+            if (archive[i] != NULL)
+                delete archive[i];
+    delete[] archive;
 }
 int HashTable::Hashsum(string title){
     int sum = 0;
@@ -30,9 +33,9 @@ int HashTable::Hashsum(string title){
     sum=sum%hashsize;
     return sum;
 }
-void HashTable::insertshow(string series, int total, bool finished){
+void HashTable::insertshow(string series, int total, bool ended){
     int i=Hashsum(series);
-    show *shw=new show(series, total, finished);
+    show *shw=new show(series, total, ended);
     if (archive[i]==NULL){
 
     archive[i]=shw;
@@ -83,8 +86,11 @@ show *HashTable::findshow(string in_title){
     }
     return NULL;
 }
-int HashTable::rateShow(show * show_to_rate, int stars){
-    if (show_to_rate->rating != -1){
+int HashTable::rateShow(string title, int stars){
+    show *show_to_rate = findshow(title);
+    if (show_to_rate==NULL){
+        cout<<"show not found"<<endl;
+    }else if (show_to_rate->rating != -1){
         return 0;
     } else if (stars >-1 && stars < 6){
         show_to_rate->rating = stars;
@@ -104,15 +110,140 @@ bool HashTable::isCompleated(show * show_to_check){
         return false;
     }
 }
+void HashTable::next_episode_watched(string title){
+    show *watching = findshow(title);
+    if (watching==NULL){
+        cout<<"show not found"<<endl;
+    }else if (watching->compleated &&watching->finished){
+        cout<<"you have completed this show"<<endl;
+    }else if(watching->finished){
+        cout<<"you are caught up in the series"<<endl;
+    }else{
+        cout<<"Next episode:"<<watching->episode+1<<"of "<<watching->lenght<<endl;
+    }
+
+}
+void HashTable::next_to_watch_all(){
+    int test=0;
+    for (int i=0; i<hashsize; i++){
+            if (archive[i]==NULL){
+               test++;
+            }else{
+                    show *temp=archive[i];
+                while(temp->next!=NULL){
+                    if (temp->episode!=0 && temp->episode!=temp->lenght){
+                        cout<<temp->title<<". Next episode:"<<temp->episode+1<<endl;
+                    }
+                    temp=temp->next;
+                }
+                    if (temp->episode!=0 && temp->episode!=temp->lenght){
+                        cout<<temp->title<<". Next episode:"<<temp->episode+1<<endl;
+                    }
+            }
+        }
+        if (test==hashsize){
+            cout << "empty" << endl;
+        }
+}
+void HashTable::next_to_watch(string title){
+    show *watching = findshow(title);
+    if (watching==NULL){
+        cout<<"show not found"<<endl;
+    }else if(watching->compleated){
+        cout<<"this show has already been completed"<<endl;
+    }else{
+        watching->episode=watching->episode+1;
+        if (watching->episode==watching->lenght){
+            watching->compleated=true;
+            cout<<"you have completed this series"<<endl;
+        }else{
+            cout<<watching->title<<". Next episode:"<<watching->episode+1<<endl;
+        }
+    }
+}
 void HashTable::print_with_restriction(string restrict){
+    int test=0;
     if (restrict == "completed"){
+        for (int i=0; i<hashsize; i++){
+            if (archive[i]==NULL){
+               test++;
+            }else{
+                    show *temp=archive[i];
+                while(temp->next!=NULL){
+                    if (temp->compleated){
+                        cout<<temp->title<<":"<<temp->rating<<endl;
+                    }
+                    temp=temp->next;
+                }
+                    if (temp->compleated){
+                        cout<<temp->title<<":"<<temp->rating<<endl;
+                    }
 
+            }
+        }
+        if (test==hashsize){
+            cout << "empty" << endl;
+        }
     } else if (restrict == "watching"){
-
+        for (int i=0; i<hashsize; i++){
+            if (archive[i]==NULL){
+               test++;
+            }else{
+                    show *temp=archive[i];
+                while(temp->next!=NULL){
+                    if (temp->episode!=0 && temp->episode!=temp->lenght){
+                        cout<<temp->title<<":"<<temp->rating<<endl;
+                    }
+                    temp=temp->next;
+                }
+                    if (temp->episode!=0 && temp->episode!=temp->lenght){
+                        cout<<temp->title<<":"<<temp->rating<<"next episode:"<<temp->episode+1<<endl;
+                    }
+            }
+        }
+        if (test==hashsize){
+            cout << "empty" << endl;
+        }
     } else if (restrict == "finished"){
-
+        for (int i=0; i<hashsize; i++){
+            if (archive[i]==NULL){
+               test++;
+            }else{
+                    show *temp=archive[i];
+                while(temp->next!=NULL){
+                 if (temp->finished){
+                        cout<<temp->title<<":"<<temp->rating<<endl;
+                    }
+                    temp=temp->next;
+                }
+                    if (temp->finished){
+                        cout<<temp->title<<":"<<temp->rating<<endl;
+                    }
+            }
+        }
+        if (test==hashsize){
+            cout << "empty" << endl;
+        }
     } else if (restrict == "interested"){
-
+        for (int i=0; i<hashsize; i++){
+            if (archive[i]==NULL){
+               test++;
+            }else{
+                    show *temp=archive[i];
+                while(temp->next!=NULL){
+                    if (temp->episode==0 ){
+                        cout<<temp->title<<":"<<temp->rating<<endl;
+                    }
+                    temp=temp->next;
+                }
+                    if (temp->episode==0 ){
+                        cout<<temp->title<<":"<<temp->rating<<"next episode:"<<temp->episode+1<<endl;
+                    }
+            }
+        }
+        if (test==hashsize){
+            cout << "empty" << endl;
+        }
     } else {
         cout<<"unknown print restriction"<<endl;
     }

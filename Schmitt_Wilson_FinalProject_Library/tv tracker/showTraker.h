@@ -6,21 +6,21 @@ struct show{
     std::string title;  //the titles of the series
     int episode;        //current episode you are on
     int lenght;         //the total length of the series currently
-    bool compleated;    //wether or not they are still making episodeds for it;
+    bool finished;      //weather or not they are still making episodes for it;
     show *next;
     int rating;         //rating of show on scale of 0 to 5 (stars)
     bool interested;    //intend to watch
     bool watching;      //currently watching
-    bool finished;      //have watched
+    bool compleated;    //have watched
 
     show(){};
 
-    show(std::string series, int total, bool finished)
+    show(std::string series, int total, bool ended)
     {
         title = series;
         episode = 0;
         lenght = total;
-        compleated=finished;
+        finished=ended;
         next=NULL;
         rating = -1;
 
@@ -38,9 +38,12 @@ class HashTable
         void deleteshow(std::string title);
         int Hashsum(std::string title);
         void printInventory();
-        int rateShow(show*, int);
+        int rateShow(std::string, int);
         bool isCompleated(show*);
         void print_with_restriction(std::string);
+        void next_episode_watched(std::string);
+        void next_to_watch_all();
+        void next_to_watch(std::string);
 
     protected:
     private:

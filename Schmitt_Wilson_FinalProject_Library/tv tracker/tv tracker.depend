@@ -16,3 +16,10 @@
 1429681005 source:/home/user/Dropbox/Data_Structures/Schmitt_CSCI2270_FinalProject/Schmitt_Wilson_FinalProject_Library/tv tracker/showTraker.cpp
 	"showTraker.h"
 
+1429727474 source:/home/user/Desktop/final project/Schmitt_CSCI2270_FinalProject/Schmitt_Wilson_FinalProject_Library/tv tracker/main.cpp
+	<iostream>
+	"showTraker.h"
+
+1429729888 /home/user/Desktop/final project/Schmitt_CSCI2270_FinalProject/Schmitt_Wilson_FinalProject_Library/tv tracker/showTraker.h
+	<iostream>
+
