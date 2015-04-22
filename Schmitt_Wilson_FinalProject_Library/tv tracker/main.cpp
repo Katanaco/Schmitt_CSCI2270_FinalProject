@@ -1,5 +1,6 @@
 #include <iostream>
 #include "showTraker.h"
+#include "showSort.cpp"
 
 using namespace std;
 
@@ -17,6 +18,8 @@ int main(){
     cout<<"enter hash table size"<<endl;
     cin>>i;
     HashTable H(i);
+    show_ref * testptr = new show_ref;
+    show_Sort S(testptr);
 
     string input = "";
     int input2;

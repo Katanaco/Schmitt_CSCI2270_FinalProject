@@ -1,6 +1,10 @@
 #ifndef SHOWTRAKER_H_INCLUDED
 #define SHOWTRAKER_H_INCLUDED
 #include <iostream>
+//#include "showSort.cpp"
+#include "showSort.h"
+
+struct show_ref;
 
 struct show{
     std::string title;  //the titles of the series

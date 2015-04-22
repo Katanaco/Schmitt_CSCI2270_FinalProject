@@ -1,6 +1,9 @@
 #ifndef SHOWSORT_H_INCLUDED
 #define SHOWSORT_H_INCLUDED
 #include <iostream>
+#include "showTraker.h"
+
+struct show;
 
 struct show_ref{
     show * ref_ptr;
@@ -9,7 +12,7 @@ struct show_ref{
 
     show_ref(){};
 
-    show_ref(show * rp, show_ref * n, show_ref p)
+    show_ref(show * rp, show_ref * n, show_ref * p)
     {
         ref_ptr = rp;
         next = n;

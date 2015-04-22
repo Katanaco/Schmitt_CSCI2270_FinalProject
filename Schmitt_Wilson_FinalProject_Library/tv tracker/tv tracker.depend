@@ -6,14 +6,16 @@
 1429667327 /home/user/Dropbox/Data Structures Shit/tv tracker/showTraker.h
 	<iostream>
 
-1429679031 source:/home/user/Dropbox/Data_Structures/Schmitt_CSCI2270_FinalProject/Schmitt_Wilson_FinalProject_Library/tv tracker/main.cpp
+1429742423 source:/home/user/Dropbox/Data_Structures/Schmitt_CSCI2270_FinalProject/Schmitt_Wilson_FinalProject_Library/tv tracker/main.cpp
 	<iostream>
 	"showTraker.h"
+	"showSort.cpp"
 
-1429680921 /home/user/Dropbox/Data_Structures/Schmitt_CSCI2270_FinalProject/Schmitt_Wilson_FinalProject_Library/tv tracker/showTraker.h
+1429742170 /home/user/Dropbox/Data_Structures/Schmitt_CSCI2270_FinalProject/Schmitt_Wilson_FinalProject_Library/tv tracker/showTraker.h
 	<iostream>
+	"showSort.h"
 
-1429681005 source:/home/user/Dropbox/Data_Structures/Schmitt_CSCI2270_FinalProject/Schmitt_Wilson_FinalProject_Library/tv tracker/showTraker.cpp
+1429736893 source:/home/user/Dropbox/Data_Structures/Schmitt_CSCI2270_FinalProject/Schmitt_Wilson_FinalProject_Library/tv tracker/showTraker.cpp
 	"showTraker.h"
 
 1429727474 source:/home/user/Desktop/final project/Schmitt_CSCI2270_FinalProject/Schmitt_Wilson_FinalProject_Library/tv tracker/main.cpp
@@ -22,4 +24,12 @@
 
 1429729888 /home/user/Desktop/final project/Schmitt_CSCI2270_FinalProject/Schmitt_Wilson_FinalProject_Library/tv tracker/showTraker.h
 	<iostream>
+
+1429742423 /home/user/Dropbox/Data_Structures/Schmitt_CSCI2270_FinalProject/Schmitt_Wilson_FinalProject_Library/tv tracker/showSort.h
+	<iostream>
+	"showTraker.h"
+
+1429742102 /home/user/Dropbox/Data_Structures/Schmitt_CSCI2270_FinalProject/Schmitt_Wilson_FinalProject_Library/tv tracker/showSort.cpp
+	"showTraker.h"
+	"showSort.h"
 
