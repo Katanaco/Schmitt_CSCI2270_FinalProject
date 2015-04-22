@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1429667862 source:/home/user/Dropbox/Data Structures Shit/tv tracker/main.cpp
+	<iostream>
+	"showTraker.h"
+
+1429667327 /home/user/Dropbox/Data Structures Shit/tv tracker/showTraker.h
+	<iostream>
+
