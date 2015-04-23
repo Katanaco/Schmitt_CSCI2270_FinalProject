@@ -33,6 +33,14 @@
 			<Add option="-fexceptions" />
 		</Compiler>
 		<Unit filename="main.cpp" />
+		<Unit filename="showSort.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="showSort.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="showTraker.cpp" />
+		<Unit filename="showTraker.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />

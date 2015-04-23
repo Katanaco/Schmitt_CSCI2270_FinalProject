@@ -22,6 +22,16 @@ int main(){
     string input = "";
     int input2;
     bool checkdistricts=false;
+    H.insertshow("code lyoko",200,true);
+    H.insertshow("adventure time",80,false);
+    H.insertshow("steven universe",40,false);
+    H.insertshow("flcl",6,true);
+    H.insertshow("jojos",110,false);
+    H.insertshow("archer",60,false);
+    H.rateShow("adventure time",1);
+    H.rateShow("steven universe",3);
+    H.rateShow("flcl",4);
+    H.rateShow("jojos",4);
     while (input != "5"){
         displayMenu();
         cin>>input;
@@ -47,11 +57,20 @@ int main(){
             //H.printInventory();
             head = H.sortSetup();
             show_Sort sortthing(head);
-            head = sortthing.sort_by_length();
+            sortthing.sort_by_length();
+            head = sortthing.get_head();
             while (head->next != NULL){
                 cout<<head->ref_ptr->title<<" : "<<head->ref_ptr->lenght<<endl;
                 head=head->next;
             }
+            cout<<head->ref_ptr->title<<" : "<<head->ref_ptr->lenght<<endl;
+            sortthing.sort_by_rating();
+            head = sortthing.get_head();
+            while (head->next != NULL){
+                cout<<head->ref_ptr->title<<" : "<<head->ref_ptr->rating<<endl;
+                head=head->next;
+            }
+            cout<<head->ref_ptr->title<<" : "<<head->ref_ptr->rating<<endl;
             sortthing.~show_Sort();
         }
     }

@@ -50,13 +50,14 @@ class show_Sort
     public:
         show_Sort(show_ref*);
         ~show_Sort();
-        show_ref * sort_by_rating();
-        show_ref * sort_by_length();
+        void sort_by_rating();
+        void sort_by_length();
+        show_ref * get_head();
 
     protected:
     private:
         show_ref * archive_list_head;
-        void quickSort(show_ref *, int, show_ref*, int);
+        void quickSort(int, int);
 
 };
 
