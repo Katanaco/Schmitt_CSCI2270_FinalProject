@@ -32,7 +32,7 @@ class show_Sort
     protected:
     private:
         show_ref * archive_list_head;
-
+        void quickSort(show_ref *, int, show_ref*, int);
 
 };
 
