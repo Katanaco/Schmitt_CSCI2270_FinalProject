@@ -1,6 +1,6 @@
 #include <iostream>
 #include "showTraker.h"
-#include "showSort.cpp"
+//#include "showSort.cpp"
 
 using namespace std;
 
@@ -18,9 +18,7 @@ int main(){
     cout<<"enter hash table size"<<endl;
     cin>>i;
     HashTable H(i);
-    show_ref * testptr = new show_ref;
-    show_Sort S(testptr);
-
+    show_ref * head;
     string input = "";
     int input2;
     bool checkdistricts=false;
@@ -46,8 +44,15 @@ int main(){
 
 
         } else if (input == "4"){
-            H.printInventory();
-
+            //H.printInventory();
+            head = H.sortSetup();
+            show_Sort sortthing(head);
+            head = sortthing.sort_by_length();
+            while (head->next != NULL){
+                cout<<head->ref_ptr->title<<" : "<<head->ref_ptr->lenght<<endl;
+                head=head->next;
+            }
+            sortthing.~show_Sort();
         }
     }
     cout<<"Goodbye!"<<endl;

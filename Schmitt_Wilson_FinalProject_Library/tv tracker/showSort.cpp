@@ -1,7 +1,6 @@
-#include "showTraker.h"
-#include "showSort.h"
-using namespace std;
 
+using namespace std;
+/*
 show_Sort::show_Sort(show_ref * ah){
     archive_list_head = ah;
 }
@@ -54,7 +53,21 @@ show_ref * show_Sort::sort_by_rating(){
             }
             out_temp->prev = out_tail;
             out_tail->next = out_temp;
-            out_temp->next = NULL;
+            out_temp->next = NULL
+class show_Sort
+{
+    public:
+        show_Sort(show_ref *);
+        ~show_Sort();
+        show_ref * sort_by_rating();
+        show_ref * sort_by_length();
+
+    protected:
+    private:
+        show_ref * archive_list_head;
+        void quickSort(show_ref *, int, show_ref*, int);
+
+};;
             out_tail=out_temp;
         }
         }
@@ -86,6 +99,20 @@ void show_Sort::quickSort(show_ref* l_ref, int l_int, show_ref* r_ref, int r_int
     show_ref *temp3;
     show_ref * i_ref = l_ref;
     int i = l_int;
+class show_Sort
+{
+    public:
+        show_Sort(show_ref *);
+        ~show_Sort();
+        show_ref * sort_by_rating();
+        show_ref * sort_by_length();
+
+    protected:
+    private:
+        show_ref * archive_list_head;
+        void quickSort(show_ref *, int, show_ref*, int);
+
+};
     show_ref * j_ref = r_ref;
     int j = r_int;
     for (int i = 0; i < (j/2); i++){
@@ -134,4 +161,4 @@ void show_Sort::quickSort(show_ref* l_ref, int l_int, show_ref* r_ref, int r_int
         quickSort(i_ref, i, r_ref, r_int);
     }
 }
-
+*/

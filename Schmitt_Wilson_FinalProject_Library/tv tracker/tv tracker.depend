@@ -33,3 +33,23 @@
 	"showTraker.h"
 	"showSort.h"
 
+1429810425 source:/home/user/Desktop/github/Schmitt_CSCI2270_FinalProject/Schmitt_Wilson_FinalProject_Library/tv tracker/main.cpp
+	<iostream>
+	"showTraker.h"
+
+1429810455 /home/user/Desktop/github/Schmitt_CSCI2270_FinalProject/Schmitt_Wilson_FinalProject_Library/tv tracker/showTraker.h
+	<iostream>
+
+1429808412 /home/user/Desktop/github/Schmitt_CSCI2270_FinalProject/Schmitt_Wilson_FinalProject_Library/tv tracker/showSort.h
+	<iostream>
+	"showTraker.h"
+
+1429805826 /home/user/Desktop/github/Schmitt_CSCI2270_FinalProject/Schmitt_Wilson_FinalProject_Library/tv tracker/showSort.cpp
+	"showTraker.h"
+	"showSort.h"
+
+1429809183 source:/home/user/Desktop/github/Schmitt_CSCI2270_FinalProject/Schmitt_Wilson_FinalProject_Library/tv tracker/showTraker.cpp
+	"showTraker.h"
+
+1429808815 source:/home/user/Desktop/github/Schmitt_CSCI2270_FinalProject/Schmitt_Wilson_FinalProject_Library/tv tracker/showSort.cpp
+
