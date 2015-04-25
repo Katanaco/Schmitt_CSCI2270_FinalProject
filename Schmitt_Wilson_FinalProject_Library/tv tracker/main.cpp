@@ -74,6 +74,7 @@ int main(){
             sortthing.~show_Sort();
         }
     }
+    //H.~HashTable();
     cout<<"Goodbye!"<<endl;
     return 0;
 }

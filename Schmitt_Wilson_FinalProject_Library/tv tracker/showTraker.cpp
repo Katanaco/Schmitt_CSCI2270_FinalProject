@@ -22,9 +22,20 @@ HashTable::HashTable(int s){
     }
 }
 HashTable::~HashTable(){
-    for (int i = 0; i < hashsize; i++)
-            if (archive[i] != NULL)
-                delete archive[i];
+    show * temp;
+    show * temp2;
+    for (int i = 0; i < hashsize; i++){
+            if (archive[i] != NULL){
+                temp = archive[i];
+                temp2 = temp;
+                while (temp->next != NULL){
+                    temp2 = temp->next;
+                    delete temp;
+                    temp = temp2;
+                }
+                delete temp;
+            }
+}
     delete[] archive;
 }
 
@@ -351,6 +362,28 @@ show_Sort::~show_Sort(){
     }
     delete temp;
 }
+/*
+Function prototype:
+void show_Sort::sort_by_rating()
+
+Function description:
+This method uses the head of the linked list of show references stored privately
+in the class and rearranges it, sorting it low to high by rating, unrated being
+first with rating values -1 and proceeding ratings of 0 to 5 after.
+
+Example;
+show_Sort sortlist(pre_sort_head);
+sortlist.sort_by_rating();
+
+Precondition:
+There is a properly linked list of struct show_ref where the head is stored
+privately in the class, which holds if the class is properly initialized.
+
+Postcondition:
+No show_ref structs or show structs are added or removed from storage, however
+linked list of show_ref structs is now ordered low to high of the rating of
+the referenced show. Also privately stored head of list is updated.
+*/
 void show_Sort::sort_by_rating(){
     show_ref * temp = archive_list_head;
     show_ref * head = archive_list_head;
@@ -395,6 +428,31 @@ void show_Sort::sort_by_rating(){
     }
     archive_list_head = head;
     }
+
+/*
+Function prototype:
+void show_Sort::sort_by_length()
+
+Function description:
+This method frames the recursive quickSort(int, int) function that orders the
+linked list whose head is stored privately in the class by the length of the
+reference pointers. Only necessary because quickSort(int, int) needs the
+first and last positions in the list to be passed in and to simplify
+the recursion of quickSort(int, int).
+
+Example;
+show_Sort sortlist(pre_sort_head);
+sortlist.sort_by_length();
+
+Precondition:
+There is a properly linked list of struct show_ref where the head is stored
+privately in the class, which holds if the class is properly initialized.
+
+Postcondition:
+No show_ref structs or show structs are added or removed from storage, however
+linked list of show_ref structs is now ordered low to high of the length of
+the referenced show. Also privately stored head of list is updated.
+*/
 void show_Sort::sort_by_length(){
     //quicksort implimentation
     show_ref * i_ref = archive_list_head;
@@ -412,7 +470,30 @@ show_ref * show_Sort::get_head(){
     return archive_list_head;
 }
 
+/*
+Function prototype:
+void show_Sort::quickSort(int, int)
 
+Function description:
+For private use inside show_Sort class only. Is a recursive function that
+implements the quick sort method of sorting. Sorts smaller and smaller sections
+of the linked list and pivots in order to completely sort the list by the
+referenced length of the show_ref struct list.
+
+Example;
+(private function, will only run if sort_by_length() is called)
+show_Sort sortlist(pre_sort_head);
+sortlist.sort_by_length();
+
+Precondition:
+There is a properly linked list of struct show_ref where the head is stored
+privately in the class, which holds if the class is properly initialized.
+
+Postcondition:
+No show_ref structs or show structs are added or removed from storage, however
+linked list of show_ref structs is now ordered low to high of the length of
+the referenced show. Also privately stored head of list is updated.
+*/
 void show_Sort::quickSort(int l_int, int r_int){
     show_ref *templeft = archive_list_head;
     for (int x = 0; x < l_int; x++){
