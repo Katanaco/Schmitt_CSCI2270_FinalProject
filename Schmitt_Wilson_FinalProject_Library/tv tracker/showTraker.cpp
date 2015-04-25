@@ -1,5 +1,8 @@
 #include "showTraker.h"
 //#include "showSort.h"
+#include <iostream>
+#include <fstream>
+#include <string>
 using namespace std;
 
 
@@ -346,6 +349,93 @@ show_ref* HashTable::sortSetup(){
 int HashTable::gethashsize(){
     return hashsize;
 
+}
+
+void HashTable::write_to_file(){
+    ofstream temp_file;
+    temp_file.open("temp.txt");
+    string write_out = "";
+    show * temp;
+    int test=0;
+    for (int i=0; i<hashsize; i++){
+        if (archive[i]==NULL){
+           test++;
+        }else{
+                temp = archive[i];
+            while(temp->next!=NULL){
+                write_out.append(temp->title);
+                write_out+= '\n';
+                write_out.append(to_string(temp->episode));
+                write_out+= '\n';
+                write_out.append(to_string(temp->lenght));
+                write_out+= '\n';
+                write_out.append(to_string(temp->rating));
+                write_out+= '\n';
+                if (temp->finished==true){
+                    write_out+= '1';
+                } else {
+                    write_out+= '0';
+                }
+                write_out+= '\n';
+                temp=temp->next;
+            }
+                write_out.append(temp->title);
+                write_out+= '\n';
+                write_out.append(to_string(temp->episode));
+                write_out+= '\n';
+                write_out.append(to_string(temp->lenght));
+                write_out+= '\n';
+                write_out.append(to_string(temp->rating));
+                write_out+= '\n';
+                if (temp->finished==true){
+                    write_out+= '1';
+                } else {
+                    write_out+= '0';
+                }
+                write_out+= '\n';
+        }
+    }
+    temp_file<<write_out;
+    temp_file.close();
+}
+
+void HashTable::read_from_file(){
+    string file_to_read = "temp.txt";
+    ifstream file;
+    file.open(file_to_read);
+    string token;
+    int i = 0;
+    string title;
+    int length;
+    int episodes;
+    int rating;
+    bool finished;
+    show * temp;
+    while (!file.eof()){
+        getline(file, token);
+        if (i == 0){
+            title = token;
+        } else if (i == 1){
+            episodes = atoi(token.c_str());
+        } else if (i == 2){
+            length = atoi(token.c_str());
+        } else if (i == 3){
+            rating = atoi(token.c_str());
+        } else {
+            if (token == "1"){
+                finished = true;
+            } else {
+                finished = false;
+            }
+            i = -1;
+            insertshow(title, length, finished);
+            rateShow(title, rating);
+            temp = findshow(title);
+            temp->episode = episodes;
+        }
+        i++;
+    }
+    file.close();
 }
 
 show_Sort::show_Sort(show_ref * head){

@@ -1,6 +1,7 @@
 #include <iostream>
 #include "showTraker.h"
 //#include "showSort.cpp"
+#include <fstream>
 
 using namespace std;
 
@@ -22,6 +23,7 @@ int main(){
     string input = "";
     int input2;
     bool checkdistricts=false;
+    /*
     H.insertshow("code lyoko",200,true);
     H.insertshow("adventure time",80,false);
     H.insertshow("steven universe",40,false);
@@ -32,6 +34,8 @@ int main(){
     H.rateShow("steven universe",3);
     H.rateShow("flcl",4);
     H.rateShow("jojos",4);
+    */
+    H.read_from_file();
     while (input != "5"){
         displayMenu();
         cin>>input;
@@ -54,7 +58,6 @@ int main(){
 
 
         } else if (input == "4"){
-            //H.printInventory();
             head = H.sortSetup();
             show_Sort sortthing(head);
             sortthing.sort_by_length();
@@ -74,6 +77,9 @@ int main(){
             sortthing.~show_Sort();
         }
     }
+
+    H.write_to_file();
+    H.printInventory();
     //H.~HashTable();
     cout<<"Goodbye!"<<endl;
     return 0;

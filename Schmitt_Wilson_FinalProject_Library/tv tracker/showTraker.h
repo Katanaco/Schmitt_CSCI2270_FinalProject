@@ -80,6 +80,8 @@ class HashTable
         void next_to_watch(std::string);
         show_ref* sortSetup();
         int gethashsize();
+        void write_to_file();
+        void read_from_file();
 
     protected:
     private:
