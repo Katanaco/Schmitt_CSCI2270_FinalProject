@@ -605,6 +605,29 @@ show_ref* HashTable::sortSetup(){
     }
 
 }
+/*
+Function prototype:
+void HashTable::write_to_file()
+
+Function description:
+This public method writes all of the class' information to the
+pre-established temp file as a means of saving information between
+instances of the program; in order to be used write to file
+should be called at the end of the instance of the library and
+read from file should be called upon the next startup.
+
+Example;
+HashTable storetable(Hash_table_size);
+storetable.insertshow("name",10,10);
+storetable.write_to_file();
+
+Precondition:
+a valid HashTable must be formed.
+
+Postcondition:
+the HashTable's information will be stored for reference upon calling
+read_from_file().
+*/
 void HashTable::write_to_file(){
     ofstream temp_file;
     temp_file.open("temp.txt");
@@ -652,6 +675,29 @@ void HashTable::write_to_file(){
     temp_file<<write_out;
     temp_file.close();
 }
+/*
+Function prototype:
+void HashTable::read_from_file()
+
+Function description:
+This public method reads all of previous use of the class' information to the
+Hash table as a means of saving information between
+instances of the program; in order to be used write to file should
+should be called at the end of the instance of the library and
+read from file should be called upon the next startup.
+
+Example;
+HashTable storetable(Hash_table_size);
+storetable.read_from_file();
+
+Precondition:
+a valid HashTable must be formed. There must be valid information written
+within the temp file.
+
+Postcondition:
+the HashTable's information will be read to the current instance for normal
+use with the rest of the class' functions.
+*/
 void HashTable::read_from_file(){
     string file_to_read = "temp.txt";
     ifstream file;
