@@ -54,6 +54,7 @@ int main(){
             cout << "Enter title:" << endl;
             getline(cin>>ws, input);
             show *found=H.findshow(input);
+            cout<<found<<endl;
 
 
 
@@ -75,6 +76,9 @@ int main(){
             }
             cout<<head->ref_ptr->title<<" : "<<head->ref_ptr->rating<<endl;
             sortthing.~show_Sort();
+        }else if(input== "6"){
+            H.clearhash();
+            H.printInventory();
         }
     }
 

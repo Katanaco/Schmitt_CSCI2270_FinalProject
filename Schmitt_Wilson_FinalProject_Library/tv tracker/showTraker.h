@@ -70,23 +70,22 @@ class HashTable
         void insertshow(std::string series, int total, bool finished);
         show* findshow(std::string title);
         void deleteshow(std::string title);
-        int Hashsum(std::string title);
         void printInventory();
         int rateShow(std::string, int);
-        bool isCompleated(show*);
         void print_with_restriction(std::string);
         void next_episode_watched(std::string);
         void next_to_watch_all();
         void next_to_watch(std::string);
         show_ref* sortSetup();
-        int gethashsize();
         void write_to_file();
         void read_from_file();
+        void clearhash();
 
     protected:
     private:
         int hashsize;
         show ** archive;
+        int Hashsum(std::string title);
         //show_Sort sorter;
         /*
         show **interested;

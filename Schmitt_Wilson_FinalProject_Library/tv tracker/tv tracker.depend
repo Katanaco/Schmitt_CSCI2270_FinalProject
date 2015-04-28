@@ -20,11 +20,12 @@
 	<fstream>
 	<string>
 
-1429727474 source:/home/user/Desktop/final project/Schmitt_CSCI2270_FinalProject/Schmitt_Wilson_FinalProject_Library/tv tracker/main.cpp
+1430169294 source:/home/user/Desktop/final project/Schmitt_CSCI2270_FinalProject/Schmitt_Wilson_FinalProject_Library/tv tracker/main.cpp
 	<iostream>
 	"showTraker.h"
+	<fstream>
 
-1429729888 /home/user/Desktop/final project/Schmitt_CSCI2270_FinalProject/Schmitt_Wilson_FinalProject_Library/tv tracker/showTraker.h
+1430180427 /home/user/Desktop/final project/Schmitt_CSCI2270_FinalProject/Schmitt_Wilson_FinalProject_Library/tv tracker/showTraker.h
 	<iostream>
 
 1429752387 /home/user/Dropbox/Data_Structures/Schmitt_CSCI2270_FinalProject/Schmitt_Wilson_FinalProject_Library/tv tracker/showSort.h
@@ -54,4 +55,10 @@
 	"showTraker.h"
 
 1429808815 source:/home/user/Desktop/github/Schmitt_CSCI2270_FinalProject/Schmitt_Wilson_FinalProject_Library/tv tracker/showSort.cpp
+
+1430169053 source:/home/user/Desktop/final project/Schmitt_CSCI2270_FinalProject/Schmitt_Wilson_FinalProject_Library/tv tracker/showTraker.cpp
+	"showTraker.h"
+	<iostream>
+	<fstream>
+	<string>
 

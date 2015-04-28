@@ -7,6 +7,9 @@ using namespace std;
 
 
 HashTable::HashTable(int s){
+    if(s<=0){
+        cout<<"invalid size"<<endl;
+    }else{
     hashsize=s;
     archive = new show*[s];
     /*
@@ -22,6 +25,7 @@ HashTable::HashTable(int s){
         watching[i]=NULL;
         finished[i]=NULL;
         */
+    }
     }
 }
 HashTable::~HashTable(){
@@ -42,6 +46,26 @@ HashTable::~HashTable(){
     delete[] archive;
 }
 
+/*
+Function prototype:
+int HashTable::Hashsum(string)
+
+Function description:
+This private method uses the title of a show and creates a hash value for it, adding
+all the char askii value and taking the integer remainder of the sum and
+the hashsize stored as a class variable.
+
+Example;
+(private function, will only run if dependent like insertshow() is called)
+HashTable storetable(Hash_table_size);
+storetable.insertshow(series, total, ended);
+
+Precondition:
+there must be a HashTable constructed with a valid hashsize and a dependent function must be called.
+
+Postcondition:
+it then outputs the that integer remainder for the title.
+*/
 int HashTable::Hashsum(string title){
     int sum = 0;
     for (int i = 0; i<title.length();i++){
@@ -50,6 +74,25 @@ int HashTable::Hashsum(string title){
     sum=sum%hashsize;
     return sum;
 }
+/*
+Function prototype:
+int HashTable::insertshow(string , int , bool)
+
+Function description:
+This method takes the arguments for a new show struct and crates it. then it finds
+its hash value in the table and alphobeticly puts it into the hash table.
+
+Example;
+HashTable storetable(Hash_table_size);
+storetable.insertshow(series, total, ended);
+
+Precondition:
+a valid HashTable must be formed and all values for a new show must be valid.
+
+Postcondition:
+a new show will be added to the hash table under its hashvalue and
+alphabetically organized into a linked list.
+*/
 void HashTable::insertshow(string series, int total, bool ended){
     int i=Hashsum(series);
     show *shw=new show(series, total, ended);
@@ -83,6 +126,25 @@ void HashTable::insertshow(string series, int total, bool ended){
 }
 
 }
+/*
+Function prototype:
+int HashTable::findshow(string)
+
+Function description:
+this method takes a title for a show and searches the hash table for a show
+structure with that title and outputs the whole structure
+
+Example;
+HashTable storetable(Hash_table_size);
+storetable.findshow(series);
+
+Precondition:
+a valid HashTable must be formed and a valid string must be entered.
+
+Postcondition:
+the HashTable will remain unchanged but a copy of the found
+structure will be output or a NULL if it was not found.
+*/
 show *HashTable::findshow(string in_title){
     for (int i=0; i<hashsize; i++){
          if (archive[i]!=NULL){
@@ -103,6 +165,27 @@ show *HashTable::findshow(string in_title){
     }
     return NULL;
 }
+/*
+Function prototype:
+int HashTable::rateShow(string, int)
+
+Function description:
+this method takes a title for a show and a rating form 1-5 then uses
+findshow to search the hash table for it and then gives it your rating.
+
+Example;
+HashTable storetable(Hash_table_size);
+storetable.rateShow(series, stars);
+
+Precondition:
+a valid HashTable must be formed and a valid string must
+be entered that corresponds to an archived show and give a stars
+value of between 1-5 and not have been rated before.
+
+Postcondition:
+the HashTable will remain unchanged but the shows rating will be
+updated returning a 1 if successful 0 if already rated and a -1 if outside the bound.
+*/
 int HashTable::rateShow(string title, int stars){
     show *show_to_rate = findshow(title);
     if (show_to_rate==NULL){
@@ -120,13 +203,28 @@ int HashTable::rateShow(string title, int stars){
     //-1 if rating outside [0,5]
     //1 if successfully rated
 }
-bool HashTable::isCompleated(show * show_to_check){
-    if (show_to_check->compleated==true){
-        return true;
-    } else {
-        return false;
-    }
-}
+/*
+Function prototype:
+int HashTable::next_episode_watched(string)
+
+Function description:
+this method takes a title for a show then uses findshow to search
+the hash table for it.  then it adds one to the episode count and tells
+you if what the next episode of that series is or that you are caught up.
+
+Example;
+HashTable storetable(Hash_table_size);
+storetable.next_episode_watched(series);
+
+Precondition:
+a valid HashTable must be formed and a valid string must
+be entered that corresponds to an archived show.
+
+Postcondition:
+the HashTable will remain unchanged but the function will tell you
+what the next episode you need to watch is or that you are caught up
+and increase the episode count and state the series is completed if it is.
+*/
 void HashTable::next_episode_watched(string title){
     show *watching = findshow(title);
     if (watching==NULL){
@@ -140,6 +238,25 @@ void HashTable::next_episode_watched(string title){
     }
 
 }
+/*
+Function prototype:
+int HashTable::next_to_watch_all()
+
+Function description:
+this method takes no argument and searches the hash table for all unfinished
+ series and tells you if what the next episode of that series is.
+
+Example;
+HashTable storetable(Hash_table_size);
+storetable.next_to_watch_all();
+
+Precondition:
+a valid HashTable must be formed.
+
+Postcondition:
+the HashTable will remain unchanged but the function will tell you
+what the next episode you need to watch is for all series in the HashTable.
+*/
 void HashTable::next_to_watch_all(){
     int test=0;
     for (int i=0; i<hashsize; i++){
@@ -162,6 +279,27 @@ void HashTable::next_to_watch_all(){
             cout << "empty" << endl;
         }
 }
+/*
+Function prototype:
+int HashTable::next_episode_watched(string)
+
+Function description:
+this method takes a title for a show then uses findshow to search
+the hash table for it and tells you if what the next episod of
+that series is or that you are caught up.
+
+Example;
+HashTable storetable(Hash_table_size);
+storetable.next_episode_watched(series);
+
+Precondition:
+a valid HashTable must be formed and a valid string must
+be entered that corresponds to an archived show.
+
+Postcondition:
+the HashTable will remain unchanged but the function will tell you
+what the next episode you need to watch is or that you are caught up.
+*/
 void HashTable::next_to_watch(string title){
     show *watching = findshow(title);
     if (watching==NULL){
@@ -178,6 +316,26 @@ void HashTable::next_to_watch(string title){
         }
     }
 }
+/*
+Function prototype:
+int HashTable::print_with_restriction(string)
+
+Function description:
+this method takes a restriction type and prints out the title, and rating
+of series that fit under these restrictions or that the HashTable is empty
+
+Example;
+HashTable storetable(Hash_table_size);
+storetable.print_with_restriction(restrict);
+
+Precondition:
+a valid HashTable must be formed and one of the following restrictions must be entered.
+restrictions:completed, watching, finished, interested.
+
+Postcondition:
+the HashTable will remain unchanged but the function will tell you
+title and rating or that the HashTable is empty.
+*/
 void HashTable::print_with_restriction(string restrict){
     int test=0;
     if (restrict == "completed"){
@@ -214,7 +372,7 @@ void HashTable::print_with_restriction(string restrict){
                     temp=temp->next;
                 }
                     if (temp->episode!=0 && temp->episode!=temp->lenght){
-                        cout<<temp->title<<":"<<temp->rating<<"next episode:"<<temp->episode+1<<endl;
+                        cout<<temp->title<<":"<<temp->rating<<endl;
                     }
             }
         }
@@ -254,7 +412,7 @@ void HashTable::print_with_restriction(string restrict){
                     temp=temp->next;
                 }
                     if (temp->episode==0 ){
-                        cout<<temp->title<<":"<<temp->rating<<"next episode:"<<temp->episode+1<<endl;
+                        cout<<temp->title<<":"<<temp->rating<<endl;
                     }
             }
         }
@@ -265,6 +423,27 @@ void HashTable::print_with_restriction(string restrict){
         cout<<"unknown print restriction"<<endl;
     }
 }
+/*
+Function prototype:
+int HashTable::deleteshow(string)
+
+Function description:
+this method takes a title for a show then uses findshow to search
+the hash table for it.  then it deletes it and adjustments the HashTable
+by fixing the linked list or making the cell NULL if it is now empty.
+
+Example;
+HashTable storetable(Hash_table_size);
+storetable.deleteshow(series);
+
+Precondition:
+a valid HashTable must be formed and a valid string must
+be entered that corresponds to an archived show.
+
+Postcondition:
+the HashTable have the given series removed and the linked list will be
+adjusted and the HashTable cell will be adjusted or made NULL if it becomes empty
+*/
 void HashTable::deleteshow(string in_title){
     show* found=findshow(in_title);
     int i=Hashsum(in_title);
@@ -282,6 +461,25 @@ void HashTable::deleteshow(string in_title){
     }
     }
 }
+/*
+Function prototype:
+int HashTable::printInventory()
+
+Function description:
+this method takes no argument and prints out the title, number of
+episodes watched out of the length or that the HashTable is empty
+
+Example;
+HashTable storetable(Hash_table_size);
+storetable.printInventory();
+
+Precondition:
+a valid HashTable must be formed.
+
+Postcondition:
+the HashTable will remain unchanged but the function will tell you
+title, number of episodes whatched out of the length or that the HashTable is empty.
+*/
 void HashTable::printInventory(){
     int test=0;
     for (int i=0; i<hashsize; i++){
@@ -303,6 +501,67 @@ void HashTable::printInventory(){
     }
 
 }
+/*
+Function prototype:
+int HashTable::clearhash()
+
+Function description:
+this method takes no argument and deletes every show in the HashTable leaving a completely empty HashTable.
+
+Example;
+HashTable storetable(Hash_table_size);
+storetable.clearhash();
+
+Precondition:
+a valid HashTable must be formed.
+
+Postcondition:
+the HashTable will become empty with all cells set to NULL.
+*/
+void HashTable::clearhash(){
+    int test=0;
+    show *del;
+    for (int i=0; i<hashsize; i++){
+        if (archive[i]==NULL){
+           test++;
+        }else{
+                show *temp=archive[i];
+            while(temp->next!=NULL){
+                del=temp;
+                temp=temp->next;
+                delete del;
+
+            }
+                delete temp;
+                archive[i]=NULL;
+
+
+        }
+    }
+    if (test==hashsize){
+        cout << "empty" << endl;
+    }
+}
+/*
+Function prototype:
+int HashTable::sortSetup()
+
+Function description:
+This private method uses the takes the hash table and makes a linked list
+of show_ref structureas pointing to all the shows in the hash table.
+it is used to setup for the sort functions below.
+
+Example;
+HashTable storetable(Hash_table_size);
+storetable.sortSetup();
+
+Precondition:
+a valid HashTable must be formed.
+
+Postcondition:
+the HashTable will remain unchanged but the function output a show_ref
+that is the head of the liked list created or a NULL if the HashTable is empty.
+*/
 show_ref* HashTable::sortSetup(){
     int test=0;
     show_ref *previous=NULL;
@@ -346,11 +605,6 @@ show_ref* HashTable::sortSetup(){
     }
 
 }
-int HashTable::gethashsize(){
-    return hashsize;
-
-}
-
 void HashTable::write_to_file(){
     ofstream temp_file;
     temp_file.open("temp.txt");
@@ -398,7 +652,6 @@ void HashTable::write_to_file(){
     temp_file<<write_out;
     temp_file.close();
 }
-
 void HashTable::read_from_file(){
     string file_to_read = "temp.txt";
     ifstream file;
@@ -437,7 +690,6 @@ void HashTable::read_from_file(){
     }
     file.close();
 }
-
 show_Sort::show_Sort(show_ref * head){
     archive_list_head = head;
     //all sorting algorithms return a list of low to high
@@ -555,11 +807,9 @@ void show_Sort::sort_by_length(){
     }
     quickSort(i_int, j_int);;
 }
-
 show_ref * show_Sort::get_head(){
     return archive_list_head;
 }
-
 /*
 Function prototype:
 void show_Sort::quickSort(int, int)
