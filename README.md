@@ -1,18 +1,19 @@
 # Schmitt_CSCI2270_FinalProject
 
-	---LITS_Project---
+	---TV Tracker Project--
 developed by Jonathan Schmitt and Zachary Wilson starting 4/14/2015
 
 Introduction:
 
-This is a c++ project library designed to work with the libspotify api and supply
-additional functionality.
+This is a c++ project library designed to keep track of shows a user watches
+storing them as a hash table and allowing quick interaction and sorting of 
+these structs via linked lists.
 
 Dependencies:
 
-The libspotify-12.1.51 is used frequently within, more acout it can be read from
-the libraries documentation at https://developer.spotify.com/technologies/libspotify/
+The library is only dependant upon standard C++ libraries.
 
 Use:
 
-In order to run internet access and a spotify account with premium is required.
+In order to run some memory and a processor are required, generally these
+are no big deal if you've got-well-a computer.
