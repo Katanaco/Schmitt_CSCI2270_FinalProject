@@ -11,7 +11,6 @@ cout << "1. Insert show" << endl;
 cout << "2. Delete show" << endl;
 cout << "3. Find show" << endl;
 cout << "4. Print contents" << endl;
-cout << "5. "<<endl;
 cout << "5. Quit" << endl;
 }
 int main(){
@@ -76,7 +75,7 @@ int main(){
             }
             cout<<head->ref_ptr->title<<" : "<<head->ref_ptr->rating<<endl;
             sortthing.~show_Sort();
-        }else if(input== "6"){
+        }else if(input== "5"){
             H.clearhash();
             H.printInventory();
         }
